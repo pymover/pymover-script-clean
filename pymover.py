@@ -12,21 +12,20 @@ config.read(file)
 # If configuration file does not have SETTINGS section, add it with default values
 if not config.has_section("SETTINGS"):
     config.add_section("SETTINGS")
-    config.set("SETTINGS", "source", "E:\MoviesSource/")
-    config.set("SETTINGS", "destination", "E:\Movies/")
+    config.set("SETTINGS", "source", "")
+    config.set("SETTINGS", "destination", "")
     config.set("SETTINGS", "sleep_timer", "5")
 
 # Write changes to configuration file
 with open(file, 'w') as configfile:
     config.write(configfile)
 
-# Display logo in console
-def logo():
-    print(logo)
-
 # Display menu in console
 def menu():
-    print(options)
+    print("[1] Run")
+    print("[2] Settings")
+    print("[3] Exit\n")
+
 
 # Clear console
 def clear():
@@ -34,8 +33,6 @@ def clear():
 
 # Allow user to adjust settings in configuration file
 def settings_menu():
-    logo()
-    print(instructions)
     source_inp = input("Enter your source path: ")
     dest_inp = input("Enter your destination path: ")
     sleep_timer_inp = input("Enter your sleep_timer: ")
@@ -47,7 +44,6 @@ def settings_menu():
         config.write(configfile)
     
     clear()
-    logo()
     menu()
 
 # Transfer files from source to destination
@@ -71,7 +67,6 @@ def notification():
 # Main program loop
 while True:
     # Display menu and get user input
-    logo()
     menu()
     option = int(input("Enter your option: "))
 
@@ -87,3 +82,5 @@ while True:
     # If user enters invalid option, display error message
     else:
         print("Invalid option")
+
+# © 2024 Mathias Frisk. All Rights Reserved
